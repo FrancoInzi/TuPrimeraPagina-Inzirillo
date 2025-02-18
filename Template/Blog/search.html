@@ -1,0 +1,15 @@
+
+{% extends 'blog/base.html' %}  
+
+{% block content %}  
+<h2>Buscar Posts</h2>  
+<form method="get">  
+    <input type="text" name="q" placeholder="Buscar por título">  
+    <button type="submit">Buscar</button>  
+</form>  
+<ul>  
+    {% for post in results %}  
+    <li>{{ post.title }}</li>  
+    {% endfor %}  
+</ul>  
+{% endblock %}
