@@ -1,18 +1,9 @@
-# blog/urls.py  
+
 from django.urls import path  
-from .views import home, add_author, search  
+from .views import crear_publicacion, buscar_publicacion  
 
 urlpatterns = [  
-    path('', home, name='home'),  
-    path('add_author/', add_author, name='add_author'),  
-    path('search/', search, name='search'),  
+    path('crear/', crear_publicacion, name='crear_publicacion'),  
+    path('buscar/', buscar_publicacion, name='buscar_publicacion'),  
 ]
 
-# blog_project/urls.py  
-from django.contrib import admin  
-from django.urls import path, include  
-
-urlpatterns = [  
-    path('admin/', admin.site.urls),  
-    path('', include('blog.urls')),  
-]

@@ -1,27 +1,24 @@
-from django.db import models
-
-# blog/models.py  
 from django.db import models  
 
-class Author(models.Model):  
-    name = models.CharField(max_length=100)  
+class Autor(models.Model):  
+    nombre = models.CharField(max_length=100)  
     email = models.EmailField()  
 
     def __str__(self):  
-        return self.name  
+        return self.nombre  
 
-class Post(models.Model):  
-    title = models.CharField(max_length=200)  
-    content = models.TextField()  
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)  
+class Categoria(models.Model):  
+    nombre = models.CharField(max_length=50)  
 
     def __str__(self):  
-        return self.title  
+        return self.nombre  
 
-class Comment(models.Model):  
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')  
-    author_name = models.CharField(max_length=100)  
-    text = models.TextField()  
+class Publicacion(models.Model):  
+    titulo = models.CharField(max_length=200)  
+    contenido = models.TextField()  
+    autor = models.ForeignKey(Autor, on_delete=models.CASCADE)  
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)  
+    fecha_publicacion = models.DateTimeField(auto_now_add=True)  
 
     def __str__(self):  
-        return f'{self.author_name} - {self.post.title}'
+        return self.titulo  

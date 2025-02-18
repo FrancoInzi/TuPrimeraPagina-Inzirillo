@@ -1,0 +1,17 @@
+{% extends 'base.html' %}  
+
+{% block content %}  
+<h2>Buscar Publicación</h2>  
+<form method="get">  
+    <input type="text" name="query" value="{{ query }}" placeholder="Buscar..." />  
+    <button type="submit">Buscar</button>  
+</form>  
+
+<ul>  
+    {% for publicacion in publicaciones %}  
+    <li>{{ publicacion.titulo }} - {{ publicacion.fecha_publicacion }}</li>  
+    {% empty %}  
+    <li>No se encontraron publicaciones.</li>  
+    {% endfor %}  
+</ul>  
+{% endblock %}

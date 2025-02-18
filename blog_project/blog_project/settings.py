@@ -24,8 +24,8 @@ SECRET_KEY = 'django-insecure-q+%f)3@ob_9g)f4ks^^873()gh_g5o5g(4x5#w+s4y*4v@$_qv
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+#agregar el IP local-->
+ALLOWED_HOSTS = ['198.168.100.3', 'localhost', '127.0.0.1', '*']
 
 
 # Application definition
@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'blog_project.urls'
+ROOT_URLCONF = 'blog_project.blog_project.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'blog_project.wsgi.application'
+WSGI_APPLICATION = 'blog_project.blog_project.wsgi.application'
 
 
 # Database

@@ -1,27 +1,19 @@
-from django.shortcuts import render
 
-# Create your views here.
-
-# blog/views.py  
 from django.shortcuts import render, redirect  
-from .models import Author, Post, Comment  
-from .forms import AuthorForm, PostForm, CommentForm  
+from .forms import AutorForm, CategoriaForm, PublicacionForm  
+from .models import Publicacion  
 
-def home(request):  
-    posts = Post.objects.all()  
-    return render(request, 'blog/home.html', {'posts': posts})  
-
-def add_author(request):  
+def crear_publicacion(request):  
     if request.method == 'POST':  
-        form = AuthorForm(request.POST)  
+        form = PublicacionForm(request.POST)  
         if form.is_valid():  
             form.save()  
-            return redirect('home')  
+            return redirect('listar_publicaciones')  
     else:  
-        form = AuthorForm()  
-    return render(request, 'blog/add_author.html', {'form': form})  
+        form = PublicacionForm()  
+    return render(request, 'crear_publicacion.html', {'form': form})  
 
-def search(request):  
-    query = request.GET.get('q')  
-    results = Post.objects.filter(title__icontains=query) if query else []  
-    return render(request, 'blog/search.html', {'results': results})
+def buscar_publicacion(request):  
+    query = request.GET.get('query', '')  
+    publicaciones = Publicacion.objects.filter(titulo__icontains=query)  
+    return render(request, 'buscar_publicacion.html', {'publicaciones': publicaciones, 'query': query})

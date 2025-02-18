@@ -1,18 +1,18 @@
  
 from django import forms  
-from .models import Author, Post, Comment  
+from .models import Autor, Categoria, Publicacion  
 
-class AuthorForm(forms.ModelForm):  
+class AutorForm(forms.ModelForm):  
     class Meta:  
-        model = Author  
-        fields = ['name', 'email']  
+        model = Autor  
+        fields = ['nombre', 'email']  
 
-class PostForm(forms.ModelForm):  
+class CategoriaForm(forms.ModelForm):  
     class Meta:  
-        model = Post  
-        fields = ['title', 'content', 'author']  
+        model = Categoria  
+        fields = ['nombre']  
 
-class CommentForm(forms.ModelForm):  
+class PublicacionForm(forms.ModelForm):  
     class Meta:  
-        model = Comment  
-        fields = ['post', 'author_name', 'text']
+        model = Publicacion  
+        fields = ['titulo', 'contenido', 'autor', 'categoria']  
